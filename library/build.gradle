@@ -2,20 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.dcendents.android-maven'
-
-project.group = 'com.github.awareframework'
-
-project.ext.name = 'Aware-Android-Device'
-project.ext.artifactId = "aware-device"
-project.ext.description = 'AWARE Device module'
-project.ext.url = 'https://github.com/awareframework/com.aware.android.sensor.device'
 
 project.ext.saferoom = System.getenv("saferoom") ?: "0.3.2"
-project.ext.room = System.getenv("saferoom") ?: "1.0.0"
+project.ext.room = System.getenv("room") ?: "1.0.0"
 
 dependencies {
-    api 'com.github.awareframework:com.aware.android.core:-SNAPSHOT'
+    api 'com.github.awareframework:com.awareframework.android.core:-SNAPSHOT'
 
     //Support libs
     implementation "com.android.support:appcompat-v7:$support_libs"
