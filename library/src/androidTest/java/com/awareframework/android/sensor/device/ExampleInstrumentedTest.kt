@@ -2,7 +2,9 @@ package com.awareframework.android.sensor.device
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import org.junit.Assert.assertEquals
+import android.util.Log
+import com.awareframework.android.core.db.Engine
+import com.awareframework.android.sensor.device.model.DeviceData
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -17,6 +19,17 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.awareframework.android.sensor.device", appContext.packageName)
+
+        DeviceSensor.start(appContext, DeviceSensor.Config().apply {
+            sensorObserver = object : DeviceSensor.Observer {
+                override fun onDeviceChanged(data: DeviceData) {
+                    Log.d(DeviceSensor.TAG, DeviceData.toString())
+                }
+
+            }
+            dbType = Engine.DatabaseType.ROOM
+            debug = true
+            //more configuration...
+        })
     }
 }

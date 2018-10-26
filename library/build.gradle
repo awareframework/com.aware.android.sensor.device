@@ -2,25 +2,24 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.dcendents.android-maven'
 
 project.ext.saferoom = System.getenv("saferoom") ?: "0.3.2"
 project.ext.room = System.getenv("room") ?: "1.0.0"
 
 dependencies {
-    api 'com.github.awareframework:com.awareframework.android.core:-SNAPSHOT'
+    api 'com.github.awareframework:com.aware.android.core:master-SNAPSHOT'
 
-    //Support libs
+    // Gson
+    implementation "com.google.code.gson:gson:$gson"
+
+    // Support Dependencies
     implementation "com.android.support:appcompat-v7:$support_libs"
-
-    // ROOM
-    implementation "android.arch.persistence.room:runtime:$room"
-    kapt "android.arch.persistence.room:compiler:$room"
-    implementation "com.commonsware.cwac:saferoom:$saferoom"
 
     // TEST
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation "com.android.support.test:runner:$support_test_runner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$test_espresso_espresso_core"
 
     // KOTLIN
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -33,8 +32,8 @@ android {
     defaultConfig {
         minSdkVersion project.ext.minimum_sdk
         targetSdkVersion project.ext.target_sdk
-        versionCode version_code
-        versionName version_readable
+        versionCode 1
+        versionName "0.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
