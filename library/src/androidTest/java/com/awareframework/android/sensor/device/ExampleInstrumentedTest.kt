@@ -23,7 +23,7 @@ class ExampleInstrumentedTest {
         DeviceSensor.start(appContext, DeviceSensor.Config().apply {
             sensorObserver = object : DeviceSensor.Observer {
                 override fun onDeviceChanged(data: DeviceData) {
-                    Log.d(DeviceSensor.TAG, DeviceData.toString())
+                    Log.d(DeviceSensor.TAG, data.toString())
                 }
 
             }
