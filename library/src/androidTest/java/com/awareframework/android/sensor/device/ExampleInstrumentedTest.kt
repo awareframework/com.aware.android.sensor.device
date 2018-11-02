@@ -31,5 +31,7 @@ class ExampleInstrumentedTest {
             debug = true
             //more configuration...
         })
+
+        DeviceSensor.stop(appContext)
     }
 }

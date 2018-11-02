@@ -94,12 +94,14 @@ class DeviceSensor : AwareSensor() {
             serial = Build.SERIAL
             release = Build.VERSION.RELEASE
             releaseType = Build.TYPE
-            sdk = Build.VERSION.SDK_INT.toString()
+            sdk = Build.VERSION.SDK_INT
             label = CONFIG.label
         }
 
         dbEngine?.save(data, DeviceData.TABLE_NAME)
         CONFIG.sensorObserver?.onDeviceChanged(data)
+
+        sendBroadcast(Intent(ACTION_AWARE_DEVICE))
 
         return START_STICKY
     }

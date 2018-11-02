@@ -17,7 +17,7 @@ data class DeviceData(
         var serial: String? = null,
         var release: String? = null,
         var releaseType: String? = null,
-        var sdk: String? = null
+        var sdk: Int? = 0
 ) : AwareObject(jsonVersion = 1) {
     companion object {
         const val TABLE_NAME = "deviceData"
