@@ -1,4 +1,4 @@
-# AWARE Screen
+# AWARE Device
 
 [![jitpack-badge](https://jitpack.io/v/awareframework/com.aware.android.sensor.device.svg)](https://jitpack.io/#awareframework/com.aware.android.sensor.device)
 
@@ -39,7 +39,7 @@ Class to hold the configuration of the sensor.
 | model | String | Device's model |
 | serial | String | Device's serial number. Newer devices no longer report this. |
 | releaseType | String | Android's type of release (user, userdebug, eng) |
-| sdk   | string | Android's SDK level
+| sdk   | Int | Android's SDK level
 | release | String | Android's release name |
 | product   | String    | Device's product name |
 | manufacturer | String | Device's manufacturer name |
