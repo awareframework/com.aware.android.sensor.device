@@ -5,6 +5,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.util.Log
 import com.awareframework.android.core.db.Engine
 import com.awareframework.android.sensor.device.model.DeviceData
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -15,6 +16,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
     @Test
     fun useAppContext() {
         // Context of the app under test.
@@ -25,9 +27,8 @@ class ExampleInstrumentedTest {
                 override fun onDeviceChanged(data: DeviceData) {
                     Log.d(DeviceSensor.TAG, data.toString())
                 }
-
             }
-            dbType = Engine.DatabaseType.ROOM
+            dbType = Engine.DatabaseType.NONE
             debug = true
             //more configuration...
         })

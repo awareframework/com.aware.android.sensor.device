@@ -2,7 +2,7 @@
 apply from: 'https://raw.githubusercontent.com/awareframework/com.aware.android.core/master/aware.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.3.0'
+    ext.kotlin_version = '1.3.11'
     repositories {
         google()
         jcenter()

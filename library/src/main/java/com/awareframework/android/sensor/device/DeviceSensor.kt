@@ -17,9 +17,7 @@ class DeviceSensor : AwareSensor() {
         fun onDeviceChanged(data: DeviceData)
     }
 
-    data class Config(
-            var sensorObserver: Observer? = null
-    ) : SensorConfig(dbPath = "aware_device") {
+    data class Config(var sensorObserver: Observer? = null) : SensorConfig(dbPath = "aware_device") {
         override fun <T : SensorConfig> replaceWith(config: T) {
             super.replaceWith(config)
 
@@ -111,7 +109,7 @@ class DeviceSensor : AwareSensor() {
 
         dbEngine?.close()
         unregisterReceiver(deviceReceiver)
-        logd("Device service terminated.")
+        logd("$TAG terminated.")
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -124,21 +122,22 @@ class DeviceSensor : AwareSensor() {
         override fun onReceive(context: Context?, intent: Intent?) {
             context ?: return
 
-            logd("Sensor broadcast received. action " + intent?.action)
+            logd("$TAG broadcast received. action " + intent?.action)
 
             when (intent?.action) {
                 SENSOR_START_ENABLED -> {
-                    logd("Sensor enabled: " + CONFIG.enabled)
+                    logd("$TAG enabled: " + CONFIG.enabled)
 
                     if (CONFIG.enabled) start(context)
                 }
 
                 ACTION_AWARE_DEVICE_STOP, SENSOR_STOP_ALL -> {
-                    logd("Stopping sensor.")
+                    logd("Stopping $TAG.")
                     stop(context)
                 }
 
                 ACTION_AWARE_DEVICE_START -> {
+                    logd("Starting $TAG.")
                     start(context)
                 }
             }
